@@ -6,28 +6,55 @@ class Queue {
 	//Constructor
 	Queue(int size) {
 		arr = new int[size];
-		int x = y = 0;
+		x = y = 0;
 		length = size;
 	}
 
+	//accessing private member
+	public int getArr(){
+		for (int i=0; i<arr.length; i++ ) {
+			System.out.print(arr[i]+" ");
+		}
+		return arr[0];
+	}		
+
 	//put/push integer into the queue
 	public boolean push(int i) {
-		if (x < arr.length-1) {
+		if (x < arr.length) {
 			arr[x++] = i;
-			System.out.println("Queue has space");
 			return true;
 		}
-		System.out.println("Queue is full");
+		System.out.println("Queue is full.");
 		return false;
 	} 
+
+	//pop integer from the queue
+	public int pop() {
+		if (y < arr.length) {
+			
+			return arr[y++];	
+		}
+		return -1;	
+	}
 }
 
 class Qdemo {
 	public static void main(String[] args) {
-		Queue qu = new Queue(15);
+		Queue qu = new Queue(10);
 
+		//push
 		for (int i=0; i<qu.length; i++) {
-			qu.push(i);
+			qu.push(2*i);
 		}
+
+		qu.getArr();
+
+		System.out.println();
+		
+		//pop
+		for (int i=0; i<qu.length; i++) {
+			System.out.print(qu.pop() + " ");
+		}
+		System.out.println();
 	}
 }
